@@ -1,0 +1,22 @@
+.internal-oneline {
+  margin: 0;
+  height: 19.6px;
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.internal-twoline {
+  margin: 0;
+  height: 39.2px;
+  font-size: 14px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.page-header {
+  clear: left;
+}

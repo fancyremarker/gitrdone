@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="GitHub Issue Health Report">
+
+    <title>GitHub Issue Health: <%= @github_org.titleize if @github_org %></title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
+
+  </head>
+
+  <body role="document">
+
+    <div class="container" role="main">
+
+      <% @issues_by_criterion.each do |criterion, issues| %>
+        <% next if issues.empty? %>
+        <div class="page-header clearfix">
+          <h2><%= criterion.to_s %></h2>
+        </div>
+
+        <% issues.each do |issue| %>
+          <div class="col-sm-4">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h3 class="panel-title internal-oneline">
+                  <a target="_blank" href="<%= issue['html_url'] %>"><%= issue['repo'] %>#<%= issue['number'] %></a>
+                </h3>
+              </div>
+              <div class="panel-body">
+                <div class="internal-twoline">
+                  <%= issue['title'] %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+
+  </body>
+</html>
