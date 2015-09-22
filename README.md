@@ -22,7 +22,7 @@ Git-R-Done is configured through environment variables. The following variables 
 | `GITHUB_TOKEN` | Token used for accessing GitHub API |
 | `GITHUB_ORG` | Name of GitHub org |
 
-Here's an example constraint JSON, demonstrating what configuration values are possible:
+Here's an example JSON value for `ENV['GITHUB_CRITERIA']`, demonstrating what constraint keys/values are possible:
 
     {
       "none": { "min_age": 7, "max_age": 365 },
