@@ -4,6 +4,10 @@
 
 Simple Sinatra app to display GitHub issues according to tidiness rules
 
+## Prerequisites
+
+* Redis
+
 ## Usage
 
     git clone https://github.com/aptible/gitrdone
@@ -21,6 +25,7 @@ Git-R-Done is configured through environment variables. The following variables 
 | `GITHUB_LABELS` | Comma-separated list of all issue labels |
 | `GITHUB_TOKEN` | Token used for accessing GitHub API |
 | `GITHUB_ORG` | Name of GitHub org |
+| `REDIS_URL` | URL for Redis server |
 
 Here's an example JSON value for `ENV['GITHUB_CRITERIA']`, demonstrating what constraint keys/values are possible:
 
