@@ -6,16 +6,13 @@ require 'redis'
 
 require_relative 'models/criterion'
 
-use Rack::Session::Cookie, secret: ENV['RACK_SESSION_SECRET'] ||
-                                   SecureRandom.base64(32)
+use Rack::Session::Cookie, secret: SecureRandom.base64(32)
 
 set :port, (ENV['PORT'] || 3000).to_i
 
-set :github_options, {
-  :scopes    => 'user',
-  :client_id => ENV['GITHUB_CLIENT_ID'],
-  :secret    => ENV['GITHUB_CLIENT_SECRET']
-}
+set :github_options, scopes: 'user',
+                     client_id: ENV['GITHUB_CLIENT_ID'],
+                     secret: ENV['GITHUB_CLIENT_SECRET']
 
 register Sinatra::Auth::Github
 
