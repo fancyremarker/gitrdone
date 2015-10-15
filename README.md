@@ -21,6 +21,8 @@ Git-R-Done is configured through environment variables. The following variables 
 
 | Environment Variable | Description |
 | -------------------- | ----------- |
+| `GITHUB_CLIENT_ID` | Client ID for GitHub org-based authentication |
+| `GITHUB_CLIENT_SECRET` | Client Secret for GitHub org-based authentication |
 | `GITHUB_CRITERIA` | JSON mapping issue labels to "constraints" |
 | `GITHUB_LABELS` | Comma-separated list of all issue labels |
 | `GITHUB_TOKEN` | Token used for accessing GitHub API |

@@ -1,14 +1,32 @@
 require 'sinatra'
+require 'securerandom'
+require 'sinatra_auth_github'
 require 'octokit'
 require 'redis'
 
 require_relative 'models/criterion'
 
+use Rack::Session::Cookie, secret: ENV['RACK_SESSION_SECRET'] ||
+                                   SecureRandom.base64(32)
+
 set :port, (ENV['PORT'] || 3000).to_i
+
+set :github_options, {
+  :scopes    => 'user',
+  :client_id => ENV['GITHUB_CLIENT_ID'],
+  :secret    => ENV['GITHUB_CLIENT_SECRET']
+}
+
+register Sinatra::Auth::Github
 
 Octokit.configure do |c|
   c.access_token = ENV['GITHUB_TOKEN']
   c.auto_paginate = true
+end
+
+before do
+  authenticate!
+  github_organization_authenticate!(ENV['GITHUB_ORG'])
 end
 
 get '/' do
