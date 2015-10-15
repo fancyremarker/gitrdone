@@ -8,4 +8,5 @@ RUN bundle install --without development test
 ADD . /app
 
 ENV PORT 3000
+ENV RACK_ENV production
 EXPOSE 3000
