@@ -51,8 +51,9 @@ def cached_issues(org)
 
   # Map Sawyer::Resource objects to basic hash
   issues = Octokit.org_issues(org, filter: 'all').map do |issue|
+    next if issue.pull_request?
     issue_hash(issue)
-  end
+  end.compact
   redis.set(key, issues.to_json, ex: redis_expiry)
   issues
 end
