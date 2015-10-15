@@ -21,7 +21,7 @@
       <% @issues_by_criterion.each do |criterion, issues| %>
         <% next if issues.empty? %>
         <div class="page-header clearfix">
-          <h2><%= criterion.to_s %></h2>
+          <h2><%= issues.count %> <%= criterion.to_s %></h2>
         </div>
 
         <% issues.each do |issue| %>
