@@ -22,6 +22,7 @@ Octokit.configure do |c|
 end
 
 before do
+  next if settings.environment == :development
   authenticate!
   github_organization_authenticate!(ENV['GITHUB_ORG'])
 end
